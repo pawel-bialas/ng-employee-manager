@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "client-ui"
+  "defaultProject": "client-ui",
+  "cli": {
+    "analytics": false
+  }
 }
