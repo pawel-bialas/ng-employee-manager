@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### Other ###
-src/client/node_modules
+client-ui/node_modules
 application.properties
