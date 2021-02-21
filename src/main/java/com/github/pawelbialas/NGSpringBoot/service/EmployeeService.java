@@ -35,7 +35,9 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee) {
-        return repository.save(employee);
+        Employee save = repository.save(employee);
+        save.setEmail(save.getFirstName().toLowerCase() + "." + save.getLastName().toLowerCase() + "@supercorp.com");
+        return repository.save(save);
     }
 
     public void deleteEmployee(Long id) {

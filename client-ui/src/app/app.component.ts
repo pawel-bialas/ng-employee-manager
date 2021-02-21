@@ -8,7 +8,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   title = 'Employee Manager Demo';
   public employees: Employee[] = [];
@@ -19,15 +19,21 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.getEmployees();
+
   }
 
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe((response: Employee[]) => {
-      this.employees = response;
-    },
+        this.employees = response;
+        console.log(this.employees);
+      },
       (error: HttpErrorResponse) => {
         alert(error.message);
       })
+  }
+
+  public getEmployee(): void {
+
   }
 
 
