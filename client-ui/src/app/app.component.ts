@@ -36,5 +36,11 @@ export class AppComponent implements OnInit {
 
   }
 
+  public onModalOpen(employee: Employee, option: string): void {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+  }
+
 
 }

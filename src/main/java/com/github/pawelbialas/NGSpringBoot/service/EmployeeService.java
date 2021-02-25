@@ -21,6 +21,7 @@ public class EmployeeService {
 
     public Employee addEmployee(Employee employee) {
         employee.setEmployeeCode(UUID.randomUUID().toString());
+        employee.setEmail(employee.getFirstName().toLowerCase() + "." + employee.getLastName().toLowerCase() + "@supercorp.com");
         return repository.save(employee);
 
     }
