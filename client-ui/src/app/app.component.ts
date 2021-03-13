@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
 
   title = 'Employee Manager Demo';
   public employees: Employee[] = [];
+  public editEmployee: Employee | null;
 
 
   constructor(private employeeService: EmployeeService) {
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
       button.setAttribute('data-target', '#addEmployeeModal')
     }
     if (option === 'update') {
+      this.editEmployee = employee;
       button.setAttribute('data-target', '#updateEmployeeModal')
     }
     if (option === 'delete') {
@@ -58,7 +60,10 @@ export class AppComponent implements OnInit {
 
 
   onAddEmployee(addForm: NgForm): void {
-    document.getElementById('add-employee-form').click();
+    let dismiss = document.getElementById('add-employee-form');
+    if (dismiss) {
+      dismiss.click();
+    }
     this.employeeService.addEmployee(addForm.value).subscribe(
       (response: Employee) => {
           console.log(response);
@@ -70,7 +75,20 @@ export class AppComponent implements OnInit {
     )
   };
 
-  onUpdateEmployee(editForm: NgForm): void {
-    this.employeeService.updateEmployee(editForm.value);
+  onUpdateEmployee(employee: Employee): void {
+    JSON.stringify(employee);
+    let dismiss = document.getElementById('update-employee-form');
+    if (dismiss) {
+      dismiss.click();
+    }
+    this.employeeService.updateEmployee(employee).subscribe(
+      (response: Employee) => {
+        console.log(response);
+        this.getEmployees();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 }
