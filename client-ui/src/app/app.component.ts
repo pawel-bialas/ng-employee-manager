@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   public title = 'Employee Manager Demo';
   public employees: Employee[] = [];
-  public editEmployee: Employee | null;
+  public updateEmployee: Employee | null;
   public deleteEmployee: Employee | null;
 
 
@@ -35,6 +35,25 @@ export class AppComponent implements OnInit {
       })
   }
 
+  public searchEmployee(key: string): void {
+    const results: Employee [] = [];
+    for (const employee of this.employees) {
+      if ((employee.firstName + ' ' + employee.lastName).toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1
+        || employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ) {
+        results.push(employee);
+      }
+    }
+    this.employees = results;
+    if (results.length === 0 || !key) {
+      this.getEmployees();
+    }
+  }
+
+
+
   public getEmployee(): void {
 
   }
@@ -49,7 +68,7 @@ export class AppComponent implements OnInit {
       button.setAttribute('data-target', '#addEmployeeModal')
     }
     if (option === 'update') {
-      this.editEmployee = employee;
+      this.updateEmployee = employee;
       button.setAttribute('data-target', '#updateEmployeeModal')
     }
     if (option === 'delete') {

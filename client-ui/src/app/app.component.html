@@ -10,7 +10,7 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+      <input name="key" ngModel #key = "ngModel"  (ngModelChange)="searchEmployee(key.value)" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
     </form>
   </div>
 </nav>
@@ -94,25 +94,25 @@
         <form #updateForm="ngForm" (ngSubmit)="onUpdateEmployee(updateForm)">
           <div class="form-group">
             <label for="firstName">Name</label>
-            <input type="text" ngModel="{{editEmployee?.firstName}}" name="firstName" class="form-control" id="firstName" placeholder="First name" required>
+            <input type="text" ngModel="{{updateEmployee?.firstName}}" name="firstName" class="form-control" id="firstName" placeholder="First name" required>
           </div>
           <div class="form-group">
             <label for="lastName">Name</label>
-            <input type="text" ngModel="{{editEmployee?.lastName}}" name="lastName" class="form-control" id="lastName" placeholder="Last name" required>
+            <input type="text" ngModel="{{updateEmployee?.lastName}}" name="lastName" class="form-control" id="lastName" placeholder="Last name" required>
           </div>
           <div class="form-group">
             <label for="phone">Job title</label>
-            <input type="text" ngModel="{{editEmployee?.jobTitle}}" name="jobTitle" class="form-control" id="jobTile" placeholder="Job title" required>
+            <input type="text" ngModel="{{updateEmployee?.jobTitle}}" name="jobTitle" class="form-control" id="jobTile" placeholder="Job title" required>
           </div>
-          <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" class="form-control" id="id" placeholder="id">
-          <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="employeeCode" class="form-control" id="employeeCode" placeholder="employeeCode">
+          <input type="hidden" ngModel="{{updateEmployee?.id}}" name="id" class="form-control" id="id" placeholder="id">
+          <input type="hidden" ngModel="{{updateEmployee?.employeeCode}}" name="employeeCode" class="form-control" id="employeeCode" placeholder="employeeCode">
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" ngModel="{{editEmployee?.phone}}" name="phone" class="form-control" id="phone" placeholder="Phone" required>
+            <input type="text" ngModel="{{updateEmployee?.phone}}" name="phone" class="form-control" id="phone" placeholder="Phone" required>
           </div>
           <div class="form-group">
             <label for="phone">Image URL</label>
-            <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+            <input type="text" ngModel="{{updateEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
           </div>
           <div class="modal-footer">
             <button type="button" id="update-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -133,10 +133,10 @@
         <button type="button" class="fa fa-times" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete employee?</p>
+        <p>Are you sure you want to delete {{deleteEmployee?.firstName + ' ' + deleteEmployee?.lastName}}?</p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button (click)="onDeleteEmployee(deleteEmployee.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button (click)="onDeleteEmployee(deleteEmployee?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
         </div>
       </div>
     </div>
