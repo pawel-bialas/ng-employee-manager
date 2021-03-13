@@ -11,7 +11,7 @@ import {NgForm} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
 
-  title = 'Employee Manager Demo';
+  public title = 'Employee Manager Demo';
   public employees: Employee[] = [];
   public editEmployee: Employee | null;
 
@@ -68,9 +68,11 @@ export class AppComponent implements OnInit {
       (response: Employee) => {
           console.log(response);
           this.getEmployees();
+          addForm.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        addForm.reset();
       }
     )
   };
