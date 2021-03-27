@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   public title = 'Employee Manager Demo';
   public employees: Employee[] = [];
   // @ts-ignore
-  public updateEmployee: Employee | null;
+  public updateEmployee: Employee;
   // @ts-ignore
-  public deleteEmployee: Employee | null;
+  public deleteEmployee: Employee;
 
 
   constructor(private employeeService: EmployeeService) {
@@ -55,7 +55,6 @@ export class AppComponent implements OnInit {
   }
 
 
-
   public getEmployee(): void {
 
   }
@@ -69,11 +68,11 @@ export class AppComponent implements OnInit {
     if (option === 'add') {
       button.setAttribute('data-target', '#addEmployeeModal')
     }
-    if (option === 'update') {
+    if (option === 'update' && employee !== null) {
       this.updateEmployee = employee;
       button.setAttribute('data-target', '#updateEmployeeModal')
     }
-    if (option === 'delete') {
+    if (option === 'delete' && employee !== null) {
       this.deleteEmployee = employee;
       button.setAttribute('data-target', '#deleteEmployeeModal')
     }
@@ -89,9 +88,9 @@ export class AppComponent implements OnInit {
     }
     this.employeeService.addEmployee(addForm.value).subscribe(
       (response: Employee) => {
-          console.log(response);
-          this.getEmployees();
-          addForm.reset();
+        console.log(response);
+        this.getEmployees();
+        addForm.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -117,15 +116,17 @@ export class AppComponent implements OnInit {
     )
   }
 
-  onDeleteEmployee(id: number): void {
-    this.employeeService.deleteEmployee(id).subscribe(
-      (response: void) => {
-        console.log(response);
-        this.getEmployees();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+  onDeleteEmployee(id: number | undefined): void {
+    if (id) {
+      this.employeeService.deleteEmployee(id).subscribe(
+        (response: void) => {
+          console.log(response);
+          this.getEmployees();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      )
+    }
   }
 }

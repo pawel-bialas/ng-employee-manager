@@ -91,7 +91,7 @@
         <button type="button" class="fa fa-times" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #updateForm="ngForm" (ngSubmit)="onUpdateEmployee(updateForm)">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdateEmployee(updateForm.value)">
           <div class="form-group">
             <label for="firstName">Name</label>
             <input type="text" ngModel="{{updateEmployee?.firstName}}" name="firstName" class="form-control" id="firstName" placeholder="First name" required>
@@ -136,6 +136,7 @@
         <p>Are you sure you want to delete {{deleteEmployee?.firstName + ' ' + deleteEmployee?.lastName}}?</p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          // @ts-ignore
           <button (click)="onDeleteEmployee(deleteEmployee?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
         </div>
       </div>
