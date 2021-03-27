@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
 
   public title = 'Employee Manager Demo';
   public employees: Employee[] = [];
+  // @ts-ignore
   public updateEmployee: Employee | null;
+  // @ts-ignore
   public deleteEmployee: Employee | null;
 
 
