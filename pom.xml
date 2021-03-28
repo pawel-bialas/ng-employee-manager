@@ -53,7 +53,7 @@
                 </executions>
                 <configuration>
                     <executable>ng</executable>
-                    <workingDirectory>src/main/client-ui</workingDirectory>
+                    <workingDirectory>src/main/ui</workingDirectory>
                     <arguments>
                         <argument>build</argument>
                     </arguments>

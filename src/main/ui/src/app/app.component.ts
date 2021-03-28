@@ -3,6 +3,7 @@ import {EmployeeService} from "./service/employee.service";
 import {Employee} from "./model/Employee";
 import {HttpErrorResponse} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,10 @@ import {NgForm} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
 
-  public title = 'Employee Manager Demo';
+
+
+
+
   public employees: Employee[] = [];
   // @ts-ignore
   public updateEmployee: Employee;
@@ -19,7 +23,8 @@ export class AppComponent implements OnInit {
   public deleteEmployee: Employee;
 
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private titleService: Title) {
+    this.titleService.setTitle('employee-manager-demo')
   }
 
   ngOnInit(): void {

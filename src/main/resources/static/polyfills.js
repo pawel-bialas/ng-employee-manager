@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\Files\source\ng-spring-boot\src\main\client-ui\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! F:\Files\source\ng-spring-boot\src\main\ui\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

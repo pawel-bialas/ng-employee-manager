@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "client-ui": {
+    "employee-manager-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "client-ui:build"
+            "browserTarget": "employee-manager-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "client-ui:build:production"
+              "browserTarget": "employee-manager-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "client-ui:build"
+            "browserTarget": "employee-manager-demo:build"
           }
         },
         "test": {
@@ -113,18 +113,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "client-ui:serve"
+            "devServerTarget": "employee-manager-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "client-ui:serve:production"
+              "devServerTarget": "employee-manager-demo:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "client-ui",
+  "defaultProject": "employee-manager-demo",
   "cli": {
     "analytics": false
   }
